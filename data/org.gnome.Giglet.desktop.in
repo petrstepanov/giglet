@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=giglet
+Exec=giglet
+Icon=org.gnome.Giglet
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true

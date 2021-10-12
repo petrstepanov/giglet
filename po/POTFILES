@@ -1,0 +1,7 @@
+data/org.gnome.Giglet.desktop.in
+data/org.gnome.Giglet.appdata.xml.in
+data/org.gnome.Giglet.gschema.xml
+src/giglet-window.ui
+src/main.c
+src/giglet-window.c
+
