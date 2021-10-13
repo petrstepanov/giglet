@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/org/gnome/Giglet">
     <file>giglet-window.ui</file>
+    <file>font-preview.ui</file>
   </gresource>
 </gresources>

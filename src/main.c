@@ -17,12 +17,15 @@
  */
 
 #include <glib/gi18n.h>
+#include <gtk/gtk-a11y.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkx.h>
 
 #include "giglet-config.h"
 #include "giglet-window.h"
 
 int
-load_fonts()
+load_fonts(GtkWindow *window)
 {
   // Load list of figlet fonts
   // See example here: https://cpp.hotexamples.com/examples/-/-/g_spawn_command_line_async/cpp-g_spawn_command_line_async-function-examples.html
@@ -36,10 +39,18 @@ load_fonts()
   if (!success){
     g_printerr("Couldn't execute command \"%s\"\n%s", command, standard_error);
     // g_free (command);
-    return -1;
+    // return -1;
   }
   g_message("Command \"%s\"executed successffully", command);
   g_free (command);
+
+  // Read template UI from file
+  GtkBuilder* builder = gtk_builder_new_from_resource ("font-preview.glade");
+  // Obtain child widget
+  // GtkWidget *fontPreview = GTK_WIDGET(gtk_builder_get_object (builder, "font_preview"));
+  // Add child to parent
+  // gtk_container_add (GTK_CONTAINER (window), fontPreview);
+  g_object_unref (builder);
 
   return 0;
   // g_log_writer_standard_streams("asdasdasd")
@@ -68,7 +79,9 @@ on_activate (GtkApplication *app)
 	/* Ask the window manager/compositor to present the window. */
 	gtk_window_present (window);
 
-  load_fonts();
+  // Find window font widget container
+  //
+  load_fonts(window);
 }
 
 int main (int argc, char *argv[]){
